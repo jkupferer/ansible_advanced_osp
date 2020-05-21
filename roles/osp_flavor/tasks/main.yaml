@@ -1,4 +1,4 @@
-- name: Create m1.medium flavor
+- name: Create m2.small flavor
   os_nova_flavor:
      cloud: openstack
      state: present

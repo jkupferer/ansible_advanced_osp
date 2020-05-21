@@ -30,7 +30,7 @@ osp_networks:
     enable_dhcp: yes
 
   # Public Facing Router connecting the two networks
-osp_router:
+osp_routers:
   router:
     cloud_name: openstack
     state: present

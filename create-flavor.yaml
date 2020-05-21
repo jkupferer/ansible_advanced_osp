@@ -1,6 +1,7 @@
-- hosts: localhost
+- name: Create OSP Flavor
+  hosts: localhost
   connection: local
-  become: no
-  gather_facts: true
+  become: false
+  gather_facts: false
   roles:
-   - osp-flavor
+  - osp_flavor

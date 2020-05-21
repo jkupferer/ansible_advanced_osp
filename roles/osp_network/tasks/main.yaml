@@ -1,3 +1,4 @@
+---
 - name: Configuration of Public and Private Networks
   os_network:
     cloud: "{{ item.value.cloud_name }}"
@@ -7,7 +8,7 @@
     admin_state_up: "{{ item.value.admin_state }}"
     provider_network_type: "{{ item.value.provider_network_type | default(omit) }}"
     provider_physical_network: "{{ item.value.provider_physical_network | default(omit) }}"
-  with_dict: "{{ osp_networks }}"
+  loop: "{{ osp_networks | dict2items }}"
 
 - name: Configuration of Subnets for Public and Private SubNets
   os_subnet:
@@ -22,9 +23,9 @@
     allocation_pool_start: "{{ item.value.allocation_pool_start | default(omit) }}"
     allocation_pool_end: "{{ item.value.allocation_pool_end | default(omit) }}"
     dns_nameservers:
-      - 8.8.8.8
-      - 8.8.8.7
-  with_dict: "{{ osp_networks }}"
+    - 8.8.8.8
+    - 8.8.4.4
+  loop: "{{ osp_networks | dict2items }}"
 
 - name: Create Router
   os_router:
@@ -36,4 +37,4 @@
       - { subnet: ext_subnet }
     interfaces:
       - "{{ item.value.interfaces }}"
-  with_dict: "{{ osp_router }}"
+  loop: "{{ osp_routers | dict2items }}"

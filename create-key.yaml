@@ -1,6 +1,7 @@
-- hosts: localhost
+- name: Create OpenStack Key
+  hosts: localhost
   connection: local
-  become: no
-  gather_facts: true
+  become: false
+  gather_facts: false
   roles:
-   - osp-key
+  - osp_key

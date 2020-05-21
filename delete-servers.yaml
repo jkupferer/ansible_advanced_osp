@@ -1,6 +1,7 @@
-- hosts: localhost
+- name: Delete OpenStack Instances
+  hosts: localhost
   connection: local
-  become: no
-  gather_facts: true
+  become: false
+  gather_facts: false
   roles:
-   - osp-instance-delete
+  - osp_instance_delete
