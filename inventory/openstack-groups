@@ -1,0 +1,11 @@
+[meta_deployment_name_Dev]
+# Placeholder to avoid warning
+
+[deployment_dev:children]
+meta_deployment_name_Dev
+
+[meta_deployment_name_QA]
+# Placeholder to avoid warning
+
+[deployment_qa:children]
+meta_deployment_name_QA

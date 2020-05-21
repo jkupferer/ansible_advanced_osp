@@ -1,36 +1,7 @@
 ---
-- name: Create instances
-  os_server:
-    name: app1
-    cloud: openstack
-    image: rhel-server-7.6-update-5
-    key_name: ansible_ssh
-    flavor: m2.small
-    security_groups: apps
-    auto_ip: false
-    wait: true
-    nics:
-    - net-name: int_network
-    meta:
-      group: apps
-      deployment_name: QA
-    userdata: |
-      #!/bin/bash
-      echo "Provisioned on $(date)" >/root/provision.txt
-  register: r_os_server
-
-- name: Start server app1
-  when: r_os_server.server.vm_state == 'stopped'
-  os_server_action:
-    server: app1
-    cloud: openstack
-    action: start
-
-- name: Add floating IP to instance
-  os_floating_ip:
-    cloud: openstack
-    reuse: true
-    server: app1
-    network: ext_network
-    wait: true
-    timeout: 200
+- name: Define servers
+  include_tasks: define-server.yaml
+  loop: "{{ osp_servers }}"
+  loop_control:
+    loop_var: _server
+    label: "{{ _server.name }}"

@@ -1,8 +1,6 @@
 ---
 - name: Create OpenStack Servers
   hosts: localhost
-  connection: local
-  become: false
   gather_facts: false
   roles:
   - osp_servers

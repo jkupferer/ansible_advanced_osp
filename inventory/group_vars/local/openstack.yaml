@@ -1,0 +1,31 @@
+---
+osp_servers:
+- name: app1
+  deployment_name: QA
+  flavor: m2.small
+  group: apps
+  image: rhel-server-7.6-update-5 
+  key_name: ansible_ssh
+
+- name: app2
+  deployment_name: QA
+  flavor: m2.small
+  group: apps
+  image: rhel-server-7.6-update-5 
+  key_name: ansible_ssh
+
+- name: appdb1
+  deployment_name: QA
+  flavor: m2.small
+  group: appdbs
+  image: rhel-server-7.6-update-5 
+  key_name: ansible_ssh
+  security_group: db
+
+- name: frontend1
+  deployment_name: QA
+  flavor: m2.small
+  group: frontends
+  image: rhel-server-7.6-update-5 
+  key_name: ansible_ssh
+  security_group: frontend
