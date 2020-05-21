@@ -1,0 +1,7 @@
+- name: Execute task over hosts...
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Iterate through hosts example
+    include_role:
+      name: iterate_example

@@ -1,0 +1,10 @@
+---
+- debug:
+    var: _iterate_host
+
+- name: Run date on "{{ _iterate_host }}"
+  command: date
+
+- name: Pause
+  pause:
+    seconds: 10

@@ -1,0 +1,9 @@
+---
+- name: Do something
+  include_tasks:
+    file: host-tasks.yaml
+    apply:
+      delegate_to: "{{ _iterate_host }}"
+  loop: "{{ groups.apps }}"
+  loop_control:
+    loop_var: _iterate_host
