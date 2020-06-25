@@ -4,4 +4,4 @@
   become: false
   gather_facts: true
   roles:
-    - osp-instance-delete
+    - osp_servers_delete
